@@ -1,0 +1,14 @@
+name: {{cookiecutter.project_slug}}
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python={{cookiecutter.python_version}}
+  - pip
+  - numpy
+  - xarray
+  - matplotlib
+  - black
+  - flake8
+  - pylint
+  {%- if cookiecutter.use_jupyter -%}- jupyterlab{%- endif -%}
