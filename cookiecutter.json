@@ -1,0 +1,14 @@
+{
+    "project_slug": "myproject",
+    "project_title": "Temporary title for the project",
+    "short_description": "One or two sentences about the project.",
+    "github_account": "compgeolab",
+    "authors": "Carl Friedrich Gauss, Marie Curie, Pierre Bouguer",
+    "journal": "Geophysical Journal International",
+    "license_code": ["MIT", "BSD 3-clause"],
+    "license_results": ["CC-BY", "CC-0"],
+    "python_version": ["3.7", "2.7"],
+    "use_jupyter": ["yes", "no"],
+    "_copy_without_render": [
+    ]
+}
