@@ -1,0 +1,17 @@
+## Manuscript output files
+manuscript/output
+
+## Code related files
+*.pyc
+*~
+*.so
+*.pyd
+.pytest_cache/
+build/
+dist/
+.*.swp
+.coverage
+.cache
+.ipynb_checkpoints
+*.egg-info
+.coverage.*

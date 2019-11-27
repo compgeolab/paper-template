@@ -1,0 +1,70 @@
+\documentclass[twocolumn]{article}
+
+\newcommand{\Title}{ {{ cookiecutter.title }} }
+\newcommand{\Author}{
+    {% for key, author in cookiecutter.authors.items() -%}
+        {{author.short_name}}
+        {%- if not loop.last -%}
+            {%- if loop.revindex == 2 -%}
+                {{ ", " }}
+            {%- endif -%}
+        {%- endif -%}
+    {% endfor %}
+}
+
+\newcommand{\AuthorAffil}{
+    {\large
+    {% for key, author in cookiecutter.authors.items() -%}
+        {{author.short_name}}$^{ {{ loop.index }} }$
+        {%- if not loop.last -%}
+            {%- if loop.revindex == 2 -%}
+                {{ ", " }}
+            {%- endif -%}
+        {%- endif -%}
+    {% endfor %}
+    }
+    \\[0.4cm]
+    {% for key, author in cookiecutter.authors.items() -%}
+        {\small $^{ {{ loop.index }} }$ {{author.affiliation}} }
+        \\
+    {% endfor %}
+}
+\newcommand{\DOI}{doi:\href{https://doi.org/xxx.xxx/xxxxxx}{10.1093/xxx.xxx/xxxxxx}}
+\newcommand{\DOILink}{\href{https://doi.org/xxx.xxx/xxxxxx}{doi.org/xxx.xxx/xxxxxx}}
+
+
+\usepackage[left=0.7in,right=0.7in,top=1in,bottom=1in]{geometry}
+\setlength{\columnsep}{2\columnsep}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[round]{natbib}
+\usepackage{url}
+\usepackage[pdftex,colorlinks=true]{hyperref}
+\hypersetup{
+    allcolors=blue,
+    pdftitle={\Title},
+    pdfauthor={\Author},
+}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{
+    \fontsize{9pt}{12pt}\selectfont
+    \Author{}, {{ cookiecutter.year }}. \DOI{}
+}
+\rhead{\fontsize{9pt}{12pt}\selectfont \thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+
+\begin{document}
+
+\title{\Title}
+\author{\AuthorAffil}
+\date{
+    \normalsize
+    \today
+}
+\maketitle
+
+\end{document}

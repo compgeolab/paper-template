@@ -1,0 +1,21 @@
+# Setup a basic environment for running the code
+name: {{ cookiecutter.project_slug }}
+channels:
+    - conda-forge
+dependencies:
+    - python={{ cookiecutter.python_version }}
+    - pip
+    - numpy
+    - pandas
+    - xarray
+    - scipy
+    - verde
+    - matplotlib
+    - jupyter-notebook
+    # Test and style checkers
+    - pytest
+    - pytest-cov
+    - coverage
+    - black
+    - flake8
+    - pylint
