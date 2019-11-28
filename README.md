@@ -23,3 +23,22 @@ Step by step instructions:
   (this will be the name of the Python package).
 
 - Reserve a DOI at Zenodo or figshare for the repository (supplement).
+
+- Explain the different DOIs that will be associated with the same publication: DOI for
+  the supplement, DOI for the preprint and DOI for the version of record (released by
+  the Journal).
+
+
+## License
+
+All content is available under the
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+This template is based on the
+[pinga-lab/paper-template](https://github.com/pinga-lab/paper-template).
+
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+
