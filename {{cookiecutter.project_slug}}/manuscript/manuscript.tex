@@ -1,5 +1,17 @@
 \documentclass[twocolumn]{article}
+\usepackage[left=0.7in,right=0.7in,top=1in,bottom=1in]{geometry}
+\setlength{\columnsep}{2\columnsep}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[round]{natbib}
+\usepackage{url}
+\usepackage[pdftex,colorlinks=true]{hyperref}
+\usepackage{fancyhdr}
 
+
+% Define title, authors, affiliations and DOI
+% ===========================================
 \newcommand{\Title}{ {{ cookiecutter.title }} }
 \newcommand{\Author}{
     {% for key, author in cookiecutter.authors.items() -%}
@@ -11,7 +23,6 @@
         {%- endif -%}
     {% endfor %}
 }
-
 \newcommand{\AuthorAffil}{
     {\large
     {% for key, author in cookiecutter.authors.items() -%}
@@ -25,28 +36,15 @@
     }
     \\[0.4cm]
     {% for key, author in cookiecutter.authors.items() -%}
-        {\small $^{ {{ loop.index }} }$ {{author.affiliation}} }
-        \\
+        {\small $^{ {{ loop.index }} }${{author.affiliation}}} \\
     {% endfor %}
 }
 \newcommand{\DOI}{doi:\href{https://doi.org/xxx.xxx/xxxxxx}{10.1093/xxx.xxx/xxxxxx}}
 \newcommand{\DOILink}{\href{https://doi.org/xxx.xxx/xxxxxx}{doi.org/xxx.xxx/xxxxxx}}
 
 
-\usepackage[left=0.7in,right=0.7in,top=1in,bottom=1in]{geometry}
-\setlength{\columnsep}{2\columnsep}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[round]{natbib}
-\usepackage{url}
-\usepackage[pdftex,colorlinks=true]{hyperref}
-\hypersetup{
-    allcolors=blue,
-    pdftitle={\Title},
-    pdfauthor={\Author},
-}
-\usepackage{fancyhdr}
+% Configure header and hypersetup
+% ===============================
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{
@@ -55,6 +53,12 @@
 }
 \rhead{\fontsize{9pt}{12pt}\selectfont \thepage}
 \renewcommand{\headrulewidth}{0pt}
+\hypersetup{
+    allcolors=blue,
+    pdftitle={\Title},
+    pdfauthor={\Author},
+}
+
 
 
 \begin{document}
@@ -66,5 +70,33 @@
     \today
 }
 \maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+    My abstract
+    \\[0.5cm]
+    \textbf{Keywords:}
+    My keywords
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Cite using natbib: \citet{uieda2018} or \citep{uieda2018}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Acknowledgments}
+
+We are indebted to the developers and maintainers of the open-source software without
+which this work would not have been possible.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
