@@ -1,4 +1,4 @@
-Copyright (c) {{ cookiecutter.year }} {{ "" }}
+Copyright (c) {{ cookiecutter.year + " " }}
 {%- for key, author in cookiecutter.authors.items() -%}
     {{author.name}}
 

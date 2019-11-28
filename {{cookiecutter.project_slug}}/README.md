@@ -1,13 +1,13 @@
 # {{cookiecutter.title}}
 
-by {{ "" }}
-{%- for key, author in cookiecutter.authors.items() -%}
+by
+{%- for key, author in cookiecutter.authors.items() %}
 [{{author.name}}]({{author.url}})
     {%- if not loop.last -%}
         {%- if loop.revindex == 2 -%}
-            {{ " and " }}
+            {{ " and" }}
         {%- else -%}
-            {{ ", " }}
+            {{ "," }}
         {%- endif -%}
     {%- endif -%}
 {% endfor %}

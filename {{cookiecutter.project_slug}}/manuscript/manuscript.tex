@@ -14,22 +14,22 @@
 % ===========================================
 \newcommand{\Title}{ {{ cookiecutter.title }} }
 \newcommand{\Author}{
-    {% for key, author in cookiecutter.authors.items() -%}
-        {{author.short_name}}
+    {%- for key, author in cookiecutter.authors.items() %}
+    {{author.short_name}}
         {%- if not loop.last -%}
             {%- if loop.revindex == 2 -%}
-                {{ ", " }}
+                {{ "," }}
             {%- endif -%}
         {%- endif -%}
     {% endfor %}
 }
 \newcommand{\AuthorAffil}{
     {\large
-    {% for key, author in cookiecutter.authors.items() -%}
+    {%- for key, author in cookiecutter.authors.items() %}
         {{author.short_name}}$^{ {{ loop.index }} }$
         {%- if not loop.last -%}
             {%- if loop.revindex == 2 -%}
-                {{ ", " }}
+                {{ "," }}
             {%- endif -%}
         {%- endif -%}
     {% endfor %}
