@@ -1,7 +1,7 @@
 # {{cookiecutter.title}}
 
 by
-{%- for author in cookiecutter.authors %}
+{%- for author in cookiecutter.authors.values() %}
 [{{author.name}}]({{author.url}})
     {%- if not loop.last -%}
         {%- if loop.revindex == 2 -%}
@@ -24,7 +24,17 @@ The version of record
 -->
 
 <!--
-{% for author in cookiecutter.authors %}{{author.short_name}}, YEAR.
+{% for author in cookiecutter.authors.values() -%}
+{{author.short_name}}
+    {%- if not loop.last -%}
+        {%- if loop.revindex == 2 -%}
+            {{ " and " }}
+        {%- else -%}
+            {{ "," }}
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor -%},
+{{ cookiecutter.year }}.
 {{ cookiecutter.title }}
 *{{ cookiecutter.journal }}*,
 doi:[xx.xxxx/xxxxxx](https://doi.org/xx.xxxx/xxxxxx)
@@ -157,5 +167,5 @@ Data and the results of numerical tests are available under the
 The manuscript text and figures are not open source. The authors reserve the
 rights to the article content
 <!--
-, which has been accepted for publication in {{ cookiecutter.journal }}.
+, which has been accepted for publication in *{{ cookiecutter.journal }}*.
 -->
