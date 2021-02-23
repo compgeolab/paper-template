@@ -1,10 +1,10 @@
 {
     "title": "The title of my paper",
     "project_slug": "my-paper",
-    "repo_name": "{{ cookiecutter.project_slug }}",
-    "gh_repo": "compgeolab/{{ cookiecutter.project_slug }}",
-    "authors": {
-        "santisoler": {
+    "repo_name": "{{cookiecutter.project_slug}}",
+    "github_account": "compgeolab",
+    "authors": [
+        {
             "name": "Santiago Soler",
             "short_name": "S. R. Soler",
             "affiliation": "CONICET, Argentina",
@@ -12,7 +12,7 @@
             "ORCID": "XXXXXXXXXXXXXXX",
             "github": "santisoler"
         },
-        "leouieda": {
+        {
             "name": "Leonardo Uieda",
             "short_name": "L. Uieda",
             "affiliation": "University of Liverpool",
@@ -20,7 +20,7 @@
             "ORCID": "XXXXXXXXXXXXXXX",
             "github": "leouieda"
         }
-    },
+    ],
     "journal": "My Favourite Journal",
     "python_version": "3.7",
     "year": "{% now 'utc', '%Y' %}",

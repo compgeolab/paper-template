@@ -1,7 +1,7 @@
 # {{cookiecutter.title}}
 
 by
-{%- for key, author in cookiecutter.authors.items() %}
+{%- for author in cookiecutter.authors %}
 [{{author.name}}]({{author.url}})
     {%- if not loop.last -%}
         {%- if loop.revindex == 2 -%}
@@ -13,8 +13,43 @@ by
 {% endfor %}
 
 
-> Fill out the sections below with the information for your paper.
+> Uncomment the following lines when a preprint has been released, the paper got
+> published and/or this repository has been made public in figshare or Zenodo.
 
+> After publication
+
+<!--
+This paper has been published in *{{ cookiecutter.journal }}*.
+The version of record
+-->
+
+<!--
+{% for author in cookiecutter.authors %}{{author.short_name}}, YEAR.
+{{ cookiecutter.title }}
+*{{ cookiecutter.journal }}*,
+doi:[xx.xxxx/xxxxxx](https://doi.org/xx.xxxx/xxxxxx)
+
+is available online at: [doi.org/xx.xxxx/xxxxxx](https://doi.org/xx.xxxx/xxxxxx)
+-->
+
+> After preprint has been published
+
+<!--
+A preprint version is available at:
+[doi.org/xx.xxxxx/xxxxx](https://doi.org/xx.xxxxx/xxxxx)
+-->
+
+> After this repo was made available on figshare or Zenodo
+
+<!--
+**This repository contains the data and code used to produce all results and figures shown
+in the paper.**
+An archived version of this repository is available at
+[doi.org/xx.xxxxx/xxxxx](https://doi.org/xx.xxxxx/xxxxx)
+-->
+
+
+## About
 
 > Brief description of what this paper is about (2-3 sentences). Include a
 > figure as well (with a caption) with the main result of your paper.
@@ -31,7 +66,7 @@ by
 > paper.
 
 All source code used to generate the results and figures in the paper are in
-the `code` and `notebooks` folders.
+the `notebooks` folders.
 The calculations and figure generation are all run inside
 [Jupyter notebooks](http://jupyter.org/).
 The data used in this study is provided in `data` and the sources for the
@@ -45,9 +80,9 @@ See the `README.md` files in each directory for a full description.
 You can download a copy of all the files in this repository by cloning the
 [git](https://git-scm.com/) repository:
 
-    git clone https://github.com/{{ cookiecutter.gh_repo }}.git
+    git clone https://github.com/{{ cookiecutter.github_account }}/{{ cookiecutter.repo_name }}.git
 
-or [download a zip archive](https://github.com/{{ cookiecutter.gh_repo }}/archive/master.zip).
+or [download a zip archive](https://github.com/{{ cookiecutter.github_account }}/{{ cookiecutter.repo_name }}/archive/master.zip).
 
 
 ## Dependencies
@@ -76,11 +111,7 @@ dependencies in it:
 
 Before running any code you must activate the conda environment:
 
-    source activate {{ cookiecutter.project_slug }}
-
-or, if you're on Windows:
-
-    activate ENVIRONMENT_NAME
+    conda activate {{ cookiecutter.project_slug }}
 
 This will enable the environment for your current terminal session.
 Any subsequent commands will use software that is installed in the environment.
@@ -104,7 +135,7 @@ repository top level and running:
     jupyter notebook
 
 This will start the server and open your default web browser to the Jupyter
-interface. In the page, go into the `code/notebooks` folder and select the
+interface. In the page, go into the `notebooks` folder and select the
 notebook that you wish to view/run.
 
 The notebook is divided into cells (some have text while other have code).
@@ -124,5 +155,7 @@ Data and the results of numerical tests are available under the
 [Creative Commons Attribution 4.0 License (CC-BY)](https://creativecommons.org/licenses/by/4.0/).
 
 The manuscript text and figures are not open source. The authors reserve the
-rights to the article content, which has been accepted for publication in
-{{ cookiecutter.journal }}.
+rights to the article content
+<!--
+, which has been accepted for publication in {{ cookiecutter.journal }}.
+-->
