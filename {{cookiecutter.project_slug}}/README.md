@@ -13,10 +13,21 @@ by
 {% endfor %}
 
 
-> Uncomment the following lines when a preprint has been released, the paper got
-> published and/or this repository has been made public in figshare or Zenodo.
+> Uncomment the following lines when:
+>   - a preprint has been released,
+>   - the paper got submitted,
+>   - the paper got published,
+>   - this repository has been made public in figshare or Zenodo.
 
-> After publication
+
+ <!-- After submission -->
+
+<!--
+This paper has been submitted for publication in *{{ cookiecutter.journal }}*.
+-->
+
+
+<!-- After publication -->
 
 <!--
 This paper has been published in *{{ cookiecutter.journal }}*.
@@ -25,7 +36,7 @@ The version of record
 
 <!--
 {% for author in cookiecutter.authors.values() -%}
-{{author.short_name}}
+> {{author.short_name}}
     {%- if not loop.last -%}
         {%- if loop.revindex == 2 -%}
             {{ " and " }}
@@ -34,22 +45,23 @@ The version of record
         {%- endif -%}
     {%- endif -%}
 {%- endfor -%},
-{{ cookiecutter.year }}.
-{{ cookiecutter.title }}
-*{{ cookiecutter.journal }}*,
-doi:[xx.xxxx/xxxxxx](https://doi.org/xx.xxxx/xxxxxx)
+> {{ cookiecutter.year }}.
+> {{ cookiecutter.title }}
+> *{{ cookiecutter.journal }}*,
+> doi:[xx.xxxx/xxxxxx](https://doi.org/xx.xxxx/xxxxxx)
 
 is available online at: [doi.org/xx.xxxx/xxxxxx](https://doi.org/xx.xxxx/xxxxxx)
 -->
 
-> After preprint has been published
+
+<!-- After preprint has been published -->
 
 <!--
 A preprint version is available at:
 [doi.org/xx.xxxxx/xxxxx](https://doi.org/xx.xxxxx/xxxxx)
 -->
 
-> After this repo was made available on figshare or Zenodo
+<!-- After this repo was made available on figshare or Zenodo -->
 
 <!--
 **This repository contains the data and code used to produce all results and figures shown
