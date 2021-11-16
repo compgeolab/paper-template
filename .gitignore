@@ -1,0 +1,12 @@
+.ipynb_checkpoints
+*.egg-info
+*.pyc
+*eps-converted-to.pdf
+*.aux
+*.bbl
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.toc
