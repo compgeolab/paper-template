@@ -1,0 +1,27 @@
+name: REPLACE_WITH_REPO_NAME
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Should be on every project
+  - python==3.10.*
+  - numpy
+  - scipy
+  - matplotlib
+  - jupyterlab
+  - black
+  # For building latex documents
+  - make
+  - tectonic
+  # Project specific dependencies
+  - pandas
+  - scikit-image
+  - xarray
+  - netcdf4
+  # For stereonets
+  - mplstereonet
+  # Fatiando
+  - pooch
+  - verde
+  - harmonica
+  - choclo

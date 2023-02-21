@@ -1,0 +1,220 @@
+% Template for an EarthArXiv preprint of the manuscript.
+% Includes the standard disclaimers and formatting that is required.
+%
+% This is the document structure. The actual content is written in:
+% * abstract.tex: The abstract.
+% * abstract-plain.tex: A plain language version of the abstract.
+% * information.tex: Title, authors, journal, DOIs, dates.
+% * content.tex: The actual manuscript text (minus the abstract).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set a class and import packages
+\documentclass[onecolumn,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[TU]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{orcidlink}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{siunitx}
+% To customize the title page
+\usepackage{titling}
+% For adding multiple authors
+\usepackage{authblk}
+% improved urls with proper hyphenation
+\usepackage{xurl}
+% Tweak the look of captions
+\usepackage{caption}
+% To control the style of section titles
+\usepackage{titlesec}
+% Import natbib and doi packages
+\usepackage[round,authoryear,sort]{natbib}
+% show dois as links on references
+\usepackage{doi}
+% Remove extra space between references
+\usepackage{natbibspacing}
+% Use a different font
+\usepackage{notomath}
+% Icons and fonts (requires using xelatex or luatex)
+\usepackage[fixed]{fontawesome5}
+\usepackage{academicons}
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage{setspace}
+% To get the number of pages in the document
+\usepackage{lastpage}
+\usepackage{lipsum}
+\usepackage{ragged2e}
+\usepackage{mdframed}
+% To define custom environments
+\usepackage{environ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import the title, authors, etc.
+\input{information.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuration of the document
+
+\geometry{%
+  left=25mm,
+  right=25mm,
+  top=18mm,
+  bottom=15mm,
+  headsep=0mm,
+  headheight=0mm,
+  footskip=5mm,
+  includehead=true,
+  includefoot=true
+}
+
+% Control line and table row spacing
+\onehalfspacing
+\renewcommand{\arraystretch}{1.5}
+
+% Set the spacing between bibliography entries (requires natbib)
+\setlength{\bibsep}{0pt}
+
+% Custom colors
+\definecolor{darkgray}{gray}{0.4}
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{verylightgray}{gray}{0.96}
+\definecolor{mediumblue}{RGB}{32, 96, 194}
+\definecolor{lightblue}{RGB}{238, 245, 250}
+
+% Customize the title and author section
+\setlength{\droptitle}{-2cm}
+\pretitle{\begin{FlushLeft}\LARGE\bfseries}
+\posttitle{\par\end{FlushLeft}{\color{lightgray}\hrule height 1.5pt}}
+\preauthor{\begin{FlushLeft}\normalsize}
+\postauthor{\par\end{FlushLeft}}
+\predate{\begin{FlushLeft}\footnotesize}
+\postdate{\par\end{FlushLeft}}
+
+% Configure captions
+\captionsetup[table]{position=below,skip=0pt}
+\captionsetup{labelfont=bf,font={small,color=darkgray},skip=10pt}
+
+% Make urls use the same font as every other text
+\urlstyle{same}
+
+% Configure hyperref and add PDF metadata
+\hypersetup{
+    colorlinks,
+    allcolors=mediumblue,
+    pdftitle={\Title},
+    pdfauthor={\AuthorShort},
+    breaklinks=true,
+}
+
+% Configure header and footer
+% Inspired by LaPreprint: https://github.com/roaldarbol/LaPreprint
+\newcommand{\Separator}{\hspace{3pt}|\hspace{3pt}}
+\newcommand{\FooterFont}{\footnotesize\color{mediumgray}}
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{%
+  \FooterFont{}
+  \AuthorShort{} (\Year)
+  \Separator{}
+  \TitleShort
+}
+\rfoot{%
+  \FooterFont{}
+  EarthArXiv
+  \Separator{}
+  \thepage\space of\space \pageref*{LastPage}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\preto{\footrule}{\color{lightgray}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \lfoot{%
+    \FooterFont{}
+    \faCreativeCommons\faCreativeCommonsBy
+    \Separator{}
+    \textcopyright{} \Year{} The Authors
+  }
+  \rfoot{%
+    \FooterFont{}
+    doi:\href{https://doi.org/\PreprintDOI}{\PreprintDOI}
+    \Separator{}
+    EarthArXiv
+    \Separator{}
+    \thepage\space of\space \pageref*{LastPage}
+  }
+}
+
+% Define fancy text boxes
+\NewEnviron{summarybox}{%
+  \mdfdefinestyle{summarybox_}{%
+    leftline=true,
+    rightline=false,
+    topline=false,
+    bottomline=false,
+    linewidth=2pt,
+    linecolor=mediumblue,
+    backgroundcolor=verylightgray,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    skipbelow=10pt,
+    skipabove=15pt,
+  }
+  \newmdenv[style=summarybox_]{summarybox_}
+  \begin{summarybox_}
+    \footnotesize
+    \BODY
+  \end{summarybox_}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\vspace{-1cm}
+\section*{\large Abstract}
+{\small \input{abstract}}
+
+\section*{\large Plain language summary}
+{\small \input{abstract-plain}}
+
+\begin{summarybox}
+  \noindent
+  \textbf{Disclaimer:}
+  This is a pre-copyedited, author-produced PDF of an article
+  submitted for publication in \textit{\Journal{}}.
+  It is available from EarthArXiv at
+  \url{https://doi.org/\PreprintDOI}.
+  \\[0.25cm]
+  \noindent
+  \textbf{License:}
+  \textcopyright{} \Year{} The Authors.
+  Available under a Creative Commons Attribution 4.0 International license
+  (\href{https://creativecommons.org/licenses/by/4.0/}{CC-BY}).
+  \\[0.25cm]
+  \noindent
+  \textbf{Reproducibility:}
+  The source code used to generate all of the results presented in this
+  research can freely accessed and reused under the terms of an open license. You can find it at \url{https://doi.org/\ArchiveRepository} and \url{https://github.com/\GitHubRepository}.
+  \\[0.25cm]
+  \noindent
+  \textbf{Keywords:} \Keywords{}
+\end{summarybox}
+
+\input{content.tex}
+
+\bibliographystyle{apalike-doi}
+\bibliography{references}
+
+\end{document}

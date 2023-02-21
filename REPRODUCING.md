@@ -50,6 +50,14 @@ All results and their associated figures are created by the notebooks in the
 `code` folder. To fully reproduce them, run each notebook from top to bottom
 following the numerical order of notebook file names.
 
+With the environment activated, start a JupyterLab server by running:
+
+```
+jupyter lab
+```
+
+Once in JupyterLab, open each notebook in turn and run them from top to bottom.
+
 > Some notebooks might take several minutes to run, depending on the resources
 > of your system.
 
