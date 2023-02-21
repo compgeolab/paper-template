@@ -10,20 +10,21 @@ The rest is gibberish text.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodology}
 
-
-\noindent
-The estimated dipole moment vector $\hat{\mathbf{m}}$ can be converted into
-declination $D$, inclination $I$, and magnitude $m$, which are more intuitive
-quantities for interpreting paleomagnetic results, like so
+This is Euler's homogeneity equation
 
 \begin{equation}
-  \label{eq_vector_to_incdec}
-\begin{aligned}
-I &= \tan^{-1}\left(\dfrac{m_z}{\sqrt{m_x^2 + m_y^2}}\right) \ , \\
-D &= \tan^{-1}\left(\dfrac{m_x}{m_y}\right) \ , \\
-m &= \sqrt{m_x^2 + m_y^2 + m_z^2} \ .
-\end{aligned}
+  \label{eq_euler_homogeneity}
+  (x - x_c)\partial_x f + (y - y_c)\partial_y f + (z - z_c)\partial_z f
+  = (b - f)\eta
+  \ ,
 \end{equation}
+
+\noindent
+in which $(x_c, y_c, z_c)$ are the coordinates of the magnetic field source,
+$b$ is the base level representing a constant shift in the signal, and $\eta$
+is the structural index corresponding to the nature of the source. You can
+reference the equation in the text like this:
+Equation~\ref{eq_euler_homogeneity}.
 
 \lipsum[10-16]
 

@@ -43,7 +43,7 @@
 % Use a different font
 \usepackage{notomath}
 % Icons and fonts (requires using xelatex or luatex)
-\usepackage[fixed]{fontawesome5}
+\usepackage{fontawesome5}
 \usepackage{academicons}
 % Control the font size
 \usepackage{anyfontsize}
@@ -86,9 +86,8 @@
 \definecolor{darkgray}{gray}{0.4}
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{lightgray}{gray}{0.9}
-\definecolor{verylightgray}{gray}{0.96}
-\definecolor{mediumblue}{RGB}{32, 96, 194}
-\definecolor{lightblue}{RGB}{238, 245, 250}
+\definecolor{mediumblue}{HTML}{2060c2}
+\definecolor{lightblue}{HTML}{f7faff}
 
 % Customize the title and author section
 \setlength{\droptitle}{-2cm}
@@ -163,17 +162,17 @@
     bottomline=false,
     linewidth=2pt,
     linecolor=mediumblue,
-    backgroundcolor=verylightgray,
-    innertopmargin=10pt,
-    innerbottommargin=10pt,
-    innerleftmargin=10pt,
-    innerrightmargin=10pt,
+    backgroundcolor=lightblue,
+    innertopmargin=12pt,
+    innerbottommargin=12pt,
+    innerleftmargin=12pt,
+    innerrightmargin=12pt,
     skipbelow=10pt,
     skipabove=15pt,
   }
   \newmdenv[style=summarybox_]{summarybox_}
   \begin{summarybox_}
-    \footnotesize
+    \small
     \BODY
   \end{summarybox_}
 }
@@ -192,16 +191,14 @@
 \begin{summarybox}
   \noindent
   \textbf{Disclaimer:}
-  This is a pre-copyedited, author-produced PDF of an article
-  submitted for publication in \textit{\Journal{}}.
-  It is available from EarthArXiv at
+  This is a non-peer reviewed preprint of an article submitted for publication
+  in \textit{\Journal{}}. It is available from EarthArXiv at
   \url{https://doi.org/\PreprintDOI}.
-  \\[0.25cm]
-  \noindent
-  \textbf{License:}
-  \textcopyright{} \Year{} The Authors.
-  Available under a Creative Commons Attribution 4.0 International license
-  (\href{https://creativecommons.org/licenses/by/4.0/}{CC-BY}).
+  %This is a peer-reviewed author-produced postprint of the article
+  %``\AuthorShort{} (\Year). \Title. \textit{\Journal}.
+  %doi:\href{https://doi.org/\JournalDOI}{\JournalDOI}''.
+  %The postprint is available from EarthArXiv at
+  %\url{https://doi.org/\PreprintDOI}.
   \\[0.25cm]
   \noindent
   \textbf{Reproducibility:}
@@ -210,6 +207,11 @@
   \\[0.25cm]
   \noindent
   \textbf{Keywords:} \Keywords{}
+  \\[0.25cm]
+  \noindent
+  \textbf{\textcopyright{} \Year{} The Authors.}
+  Available under the \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}
+  \faCreativeCommons\faCreativeCommonsBy{}.
 \end{summarybox}
 
 \input{content.tex}
