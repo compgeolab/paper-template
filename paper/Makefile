@@ -2,8 +2,9 @@
 
 ### Documents to build
 PDF = preprint.pdf
+#PDF = preprint.pdf manuscript.pdf
 ### File Types (for dependencies)
-TEX = $(wildcard *.tex)
+TEX = $(filter-out $(PDF:.pdf=.tex), $(wildcard *.tex))
 BIB = $(wildcard *.bib)
 FIG = $(wildcard figures/*)
 
