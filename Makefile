@@ -5,7 +5,7 @@
 ### Git tags for different revisions
 SUBMITTED = submitted-gji
 ### Documents to build
-PDF = paper/preprint.pdf paper/manuscript.pdf paper/manuscript-diff-$(SUBMITTED).pdf paper/cover-letter.pdf
+PDF = paper/preprint.pdf paper/manuscript.pdf paper/cover-letter.pdf
 ### File Types (for dependencies)
 TEX = $(filter-out $(PDF:.pdf=.tex), $(wildcard paper/*.tex))
 TEXVARS = $(wildcard paper/variables/*.tex)
@@ -21,6 +21,7 @@ preprint: paper/preprint.pdf
 
 manuscript: paper/manuscript.pdf
 
+# Use this to make a version with marked changes after the first reviews
 diff-submitted: paper/manuscript-diff-$(SUBMITTED).pdf
 
 letter: paper/cover-letter.pdf
@@ -33,6 +34,9 @@ clean:
 format:
 	black code/
 
+# The lock file specifies all packages installed at their exact versions. This
+# can be used to completely replicate the environment on another computer. See
+# REPRODUCING.md
 lock: conda-lock.yml
 
 wordcount:
@@ -63,12 +67,3 @@ paper/variables.tex: $(TEXVARS)
 ###############################################################################
 conda-lock.yml: environment.yml
 	conda-lock -f $<
-
-# paper/figures/%.png paper/variables/%.tex &: code/%.ipynb code/euler.py
-# 	jupyter execute --inplace --kernel_name=python3 $< && touch paper/figures/$*.png paper/variables/$*.tex
-#
-# paper/figures/real-data-application.png paper/variables/real-data-application.tex &: code/real-data-application.ipynb code/euler.py data/rio-de-janeiro-magnetic.csv
-# 	jupyter execute --inplace --kernel_name=python3 $< && touch paper/figures/real-data-application.png paper/variables/real-data-application.tex
-#
-# data/rio-de-janeiro-magnetic.csv paper/variables/real-data-preparation.tex &: code/real-data-preparation.ipynb data/raw/1038_XYZ.tar.xz
-# 	jupyter execute --inplace --kernel_name=python3 $< && touch data/rio-de-janeiro-magnetic.csv paper/variables/real-data-preparation.tex
