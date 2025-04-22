@@ -26,22 +26,22 @@ This will give you access to a Python 3 environment and the excellent `mamba`
 package manager (a drop-in replacement for `conda`).
 
 Besides the standard scientific packages, you'll also need to install some
-extra libraries like: Numba for just-in-time compilation; Harmonica, Verde,
-Boule and Pooch from the [Fatiando a Terra](https://www.fatiando.org) project;
-PyGMT for generating maps and more.
+extra libraries which are specified in the `environment.yml` file.
+**Instead of manually installing them**, they can all be automatically
+installed at the exact version we used for this paper with a conda environment:
 
-Instead of manually installing them, they can all be automatically installed
-using a conda environment.
-
+1. Install the [conda-lock](https://github.com/conda/conda-lock) package:
+   ```
+   conda install conda-lock
+   ```
 1. Inside the cloned repository (or an unzipped version), create a new virtual
-   environment from the `environment.yml` file by running:
+   environment that replicates the one we used from the `conda-lock.yml` file:
    ```
-   mamba env create -f environment.yml
+   conda-lock install --name NAME_OF_THE_ENVIRONMENT_HERE conda-lock.yml
    ```
-1. Check the environment name in the `environment.yml` file.
 1. Activate the new environment by running:
    ```
-   mamba activate ENVIRONMENT_NAME
+   conda activate NAME_OF_THE_ENVIRONMENT_HERE
    ```
 
 ## Generating the results from the paper
@@ -63,9 +63,32 @@ Once in JupyterLab, open each notebook in turn and run them from top to bottom.
 
 ## Generating the preprint PDF
 
-The `paper` folder provides a `Makefile` that includes commands that
-automatically build the preprint PDF from the LaTeX source files using
-[Tectonic](https://tectonic-typesetting.github.io/). GNU Make should be
-installed in your conda environment from above.
+The `paper` folder provides all of the LaTeX sources used to generate the paper
+PDF. A `Makefile` in the base directory of this repository includes commands
+that automatically build the preprint PDF from the LaTeX source files using
+[Tectonic](https://tectonic-typesetting.github.io/). The GNU/Make program which
+executes the `Makefile` should be installed in your conda environment from
+above.
 
-Inside the `paper` folder, run the `make` command to generate `preprint.pdf`.
+In the base folder of the cloned repository (or downloaded and unpacked
+archive), run the `make` command to generate `paper/preprint.pdf`.
+
+## Generating PDFs of marked differences between versions
+
+The `Makefile` also includes rules for generating PDFs with marked changes
+between version of the manuscript. This is used during the review process.
+To do so, you'll need to **install
+[latexdiff](https://github.com/ftilmann/latexdiff)**.
+
+On Linux and Mac, it can be installed with `conda`:
+
+```
+conda install -c conda-forge latexdiff
+```
+
+But on Windows you'll need to install it separately (hence why it's not in the
+`environment.yml` or `env/*` files).
+
+Once install, you can use `make diff-submitted` for example to create
+a manuscript with marked differences between the current version and one tagged
+on git with the `submitted` tag (see the `Makefile` for details).

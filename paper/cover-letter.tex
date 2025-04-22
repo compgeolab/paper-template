@@ -1,0 +1,122 @@
+% The cover letter sent to the journal upon submission
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set a class and general configuration
+\documentclass[a4paper,onecolumn,10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set variables with the title, authors, etc.
+
+\input{information.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import the required packages
+\usepackage[utf8]{inputenc}
+\usepackage[TU]{fontenc}
+\usepackage[british]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+% improved urls with proper hyphenation
+\usepackage{xurl}
+% Use a different font
+\usepackage[scaled=1.1]{notomath}
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage{setspace}
+% Generate random text
+\usepackage{lipsum}
+% Better left and right align
+\usepackage{ragged2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuration of the document
+
+\geometry{%
+  left=25mm,
+  right=25mm,
+  top=15mm,
+  bottom=15mm,
+  headsep=15mm,
+  headheight=15mm,
+  footskip=7mm,
+  includehead=true,
+  includefoot=true
+}
+
+% Control line spacing
+\onehalfspacing
+\newcommand{\Padding}{\vspace{0.75cm}}
+
+% Custom colors
+\definecolor{darkgray}{gray}{0.4}
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{mediumblue}{HTML}{2060c2}
+\definecolor{lightblue}{HTML}{f7faff}
+
+% Make urls use the same font as every other text
+\urlstyle{same}
+
+% Configure hyperref and add PDF metadata
+\hypersetup{
+    colorlinks,
+    allcolors=mediumblue,
+    pdftitle={Cover letter -- \Title},
+    pdfauthor={\AuthorShort},
+    breaklinks=true,
+}
+
+% Remove numbering and headers and footers
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{flushleft}
+    Editorial team
+    \\
+    \Journal
+\end{flushleft}
+\begin{flushright}
+    DATE
+\end{flushright}
+\Padding
+
+\noindent
+Dear Editor,
+\Padding
+
+We are pleased to submit the original research paper titled ``\Title{}'' for
+consideration by \Journal{}.
+The manuscript is currently available as a preprint on EarthArXiv at
+\url{https://doi.org/\PreprintDOI} under the CC-BY license.
+All of the code and data needed to reproduce our results are also provided
+through \url{https://doi.org/\ArchiveDOI} and GitHub repository
+\url{https://github.com/\GitHubRepository}, both of which are linked in the
+paper.
+
+PARAGRAPH DESCRIBING THE PAPER.
+
+SENTENCE ABOUT STUDENT AUTHORS.
+\Padding
+
+Thank you for your consideration of our manuscript.
+\Padding
+
+\begin{flushleft}
+  Yours Faithfully,
+  \Padding
+
+  CORRESPONDING AUTHOR (on behalf of all authors)
+  \\[0.25cm]
+  {
+    \color{mediumgray}
+    \small
+    AFFILIATION
+  }
+\end{flushleft}
+\end{document}

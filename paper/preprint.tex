@@ -5,43 +5,16 @@
 % * abstract.tex: The abstract.
 % * abstract-plain.tex: A plain language version of the abstract.
 % * content.tex: The actual manuscript text (minus the abstract).
+% * information.tex: Variables with title, authors, year, etc.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set a class and general configuration
-\documentclass[onecolumn,10pt]{article}
+\documentclass[onecolumn,10pt,a4paper]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Set variables with the title, authors, etc.
-\newcommand{\Title}{The long version of the paper title}
-\newcommand{\TitleShort}{A short title}
 
-\newcommand{\Year}{2023}
-\newcommand{\SubmittedOn}{2023/02/28}
-\newcommand{\PublishedOn}{2023/02/28}
-
-\newcommand{\AuthorShort}{Uieda \textit{et al.}}
-\newcommand{\Authors}{%
-  Leonardo Uieda\textsuperscript{1},
-  Santiago R. Soler\textsuperscript{2}
-}
-\newcommand{\Email}{contact-email@university.org}
-\newcommand{\Corresponding}{%
-  Corresponding author: Leonardo Uieda <\href{mailto:\Email}{\Email}>
-}
-\newcommand{\Affiliations}{%
-  \textsuperscript{1} Universidade de São Paulo, Brazil;
-  \textsuperscript{2} University of British Columbia, Canada;
-}
-
-\newcommand{\Journal}{Geochemistry, Geophysics, Geosystems}
-\newcommand{\JournalDOI}{YYYYY/YYYYYYY}
-\newcommand{\PreprintDOI}{XXXXX/XXXXXXX}
-\newcommand{\ArchiveDOI}{DOI_FOR_THE_REPO_ARCHIVE}
-\newcommand{\GitHubRepository}{compgeolab/paper-template}
-
-\newcommand{\Keywords}{%
-  keyword1; keyword2; keyword3;
-}
+% Read in the title, authors, etc
+\input{information.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Import the required packages
@@ -84,22 +57,23 @@
 \usepackage{setspace}
 % To get the number of pages in the document
 \usepackage{lastpage}
-\usepackage{lipsum}
 \usepackage{ragged2e}
 \usepackage{mdframed}
 % To define custom environments
 \usepackage{environ}
 % To control hyphenation for individual blocks of text
 \usepackage{hyphenat}
+% To generate filler text for the template. Can be removed.
+\usepackage{lipsum}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Configuration of the document
 
 \geometry{%
-  left=25mm,
-  right=25mm,
-  top=18mm,
+  left=23mm,
+  right=23mm,
+  top=15mm,
   bottom=15mm,
   headsep=0mm,
   headheight=0mm,
@@ -123,7 +97,6 @@
 \definecolor{lightblue}{HTML}{f7faff}
 
 % Configure captions
-\captionsetup[table]{position=below,skip=0pt}
 \captionsetup{labelfont=bf,font={small,color=darkgray},skip=10pt}
 
 % Make urls use the same font as every other text
@@ -218,36 +191,37 @@
   {\footnotesize \Corresponding}
   \\[0.2cm]
   {\footnotesize
-    Received in original form on \SubmittedOn.
-    %Published in final form on \PublishedOn.
+    Submitted as a preprint to EarthArXiv on \PreprintOn.
+    % Published in final form after peer-review on \PublishedOn.
   }
 \end{FlushLeft}
 
 \begin{summarybox}
   \noindent
   \textbf{Disclaimer:}
-  %This is a non-peer reviewed preprint of an article submitted for publication
-  %in \textit{\Journal{}}. It is available from EarthArXiv at
-  %\url{https://doi.org/\PreprintDOI}.
+  This is a non-peer reviewed preprint of an article submitted for publication
+  in \textit{\Journal{}}. It is available from EarthArXiv at
+  \url{https://doi.org/\PreprintDOI}.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Comment the above and uncomment below after publication in a journal
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  This is a peer-reviewed author-produced postprint of the article
-  ``\AuthorShort{} (\Year). \Title. \textit{\Journal}.
-  doi:\href{https://doi.org/\JournalDOI}{\JournalDOI}''.
-  The postprint is available from EarthArXiv at
-  \url{https://doi.org/\PreprintDOI}.
+  % This is a peer-reviewed author-produced postprint of the article
+  % ``\AuthorShort{} (\Year). \Title. \textit{\Journal}.
+  % doi:\href{https://doi.org/\JournalDOI}{\JournalDOI}''.
+  % The postprint is available from EarthArXiv at
+  % \url{https://doi.org/\PreprintDOI}.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \\[0.25cm]
   \noindent
   \textbf{Open research:}
   The source code used to generate all of the results presented in this
   research can be freely accessed and reused under the terms of an open license.
-  You can find it at \url{https://doi.org/\ArchiveDOI} and
-  \url{https://github.com/\GitHubRepository}.
+  You can find it at doi:\href{https://doi.org/\ArchiveDOI}{\ArchiveDOI},
+  Software Heritage: \href{\SWHeritageURL}{\SWHeritageID},
+  and GitHub: \href{https://github.com/\GitHubRepository}{\GitHubRepository}.
   \\[0.25cm]
   \noindent
-  \textbf{Keywords:} \Keywords{}
+  \textbf{ORCID:} \AuthorORCIDs{}.
   \\[0.25cm]
   \noindent
   \textbf{\textcopyright{} \Year{} The Authors.}
